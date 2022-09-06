@@ -1,0 +1,16 @@
+---
+- hosts: client
+  name: my latest playbook
+  become: yes
+  tasks:
+    - name: install nginx in ubuntu
+      apt: name=nginx state=present
+    - name: start nginx
+      service: name=nginx state=started
+    - name: nginix server to be run on 8888
+      command: sed -i 's/80/8888/g' /etc/nginx/sites-available/default
+    - name: copy html file
+      copy: src=/home/ec2-user/playbook/monitorcheck.html dest=/var/www/html
+    - name: restart nginx service    
+      service: name=nginx state=restarted
+      

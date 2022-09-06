@@ -1,0 +1,7 @@
+---
+- hosts: 54.86.112.209
+  name: my second playbook
+  become: true
+  tasks:
+    - name: add nginix
+      command: amazon-linux-extras enable nginx1

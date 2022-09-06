@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  name: my first playbook
+  become: true
+  tasks:
+    - name: Install nginx
+      yum: name=httpd state=absent
+  tasks:
+    - name: enable & start httpd
+      service: name=httpd state=stopped
